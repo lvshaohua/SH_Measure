@@ -69,5 +69,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (IBAction)screenEdgeSwipe:(UIScreenEdgePanGestureRecognizer *)sender {
+    if (sender.edges == UIRectEdgeLeft) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 @end

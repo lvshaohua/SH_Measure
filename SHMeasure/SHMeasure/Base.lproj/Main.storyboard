@@ -190,6 +190,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8GV-Og-pGe" firstAttribute="leading" secondItem="Clg-he-vmQ" secondAttribute="leading" constant="20" id="0dH-pA-L8E"/>
                             <constraint firstItem="h7Q-Xs-8Ix" firstAttribute="leading" secondItem="7wK-cs-Ivx" secondAttribute="leading" id="2RY-qw-GWn"/>
@@ -210,6 +211,9 @@
                             <constraint firstItem="h7Q-Xs-8Ix" firstAttribute="trailing" secondItem="7wK-cs-Ivx" secondAttribute="trailing" id="r9n-s1-nTY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Clg-he-vmQ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="sJj-lj-155" appends="YES" id="i65-jd-vwd"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="alphaLabel" destination="N1o-GW-5Zv" id="Her-Ny-vDt"/>
@@ -224,6 +228,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ViN-R8-PM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="sJj-lj-155">
+                    <connections>
+                        <action selector="screenEdgeSwipe:" destination="NIk-Vw-vGI" id="UTZ-AZ-LgI"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="124" y="-546.47676161919048"/>
         </scene>
@@ -277,11 +286,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2L-Cu-IxE" customClass="ZDStickerView">
-                                <rect key="frame" x="82" y="109" width="206" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lNu-0F-krF">
                                 <rect key="frame" x="0.0" y="377" width="375" height="226"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -388,6 +392,11 @@
                                     <action selector="doBackAction:" destination="vGF-ag-Fe8" eventType="touchUpInside" id="CKL-nB-Q1U"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2L-Cu-IxE" customClass="ZDStickerView">
+                                <rect key="frame" x="82" y="109" width="206" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>

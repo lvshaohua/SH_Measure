@@ -15,7 +15,6 @@
 		1F14F0BD20240063008CD770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0BC20240063008CD770 /* main.m */; };
 		1F14F0C720240063008CD770 /* SHMeasureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0C620240063008CD770 /* SHMeasureTests.m */; };
 		1F14F0D220240063008CD770 /* SHMeasureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0D120240063008CD770 /* SHMeasureUITests.m */; };
-		1F14F0E42024047F008CD770 /* SPGripViewBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0E12024047F008CD770 /* SPGripViewBorderView.m */; };
 		1F14F0E52024047F008CD770 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0E32024047F008CD770 /* ZDStickerView.m */; };
 		1F14F0E8202404B0008CD770 /* FontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0E7202404B0008CD770 /* FontViewController.m */; };
 		1F14F0EB202404D1008CD770 /* FrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0EA202404D1008CD770 /* FrameViewController.m */; };
@@ -57,8 +56,6 @@
 		1F14F0D120240063008CD770 /* SHMeasureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMeasureUITests.m; sourceTree = "<group>"; };
 		1F14F0D320240063008CD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F14F0E02024047F008CD770 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
-		1F14F0E12024047F008CD770 /* SPGripViewBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGripViewBorderView.m; sourceTree = "<group>"; };
-		1F14F0E22024047F008CD770 /* SPGripViewBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGripViewBorderView.h; sourceTree = "<group>"; };
 		1F14F0E32024047F008CD770 /* ZDStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDStickerView.m; sourceTree = "<group>"; };
 		1F14F0E6202404B0008CD770 /* FontViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FontViewController.h; sourceTree = "<group>"; };
 		1F14F0E7202404B0008CD770 /* FontViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontViewController.m; sourceTree = "<group>"; };
@@ -157,8 +154,6 @@
 		1F14F0DF2024046E008CD770 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F14F0E22024047F008CD770 /* SPGripViewBorderView.h */,
-				1F14F0E12024047F008CD770 /* SPGripViewBorderView.m */,
 				1F14F0E02024047F008CD770 /* ZDStickerView.h */,
 				1F14F0E32024047F008CD770 /* ZDStickerView.m */,
 			);
@@ -301,7 +296,6 @@
 				1F14F0B220240063008CD770 /* ViewController.m in Sources */,
 				1F14F0E8202404B0008CD770 /* FontViewController.m in Sources */,
 				1F14F0BD20240063008CD770 /* main.m in Sources */,
-				1F14F0E42024047F008CD770 /* SPGripViewBorderView.m in Sources */,
 				1F14F0EB202404D1008CD770 /* FrameViewController.m in Sources */,
 				1F14F0AF20240063008CD770 /* AppDelegate.m in Sources */,
 				1FA84F7020243AA000D2B5DC /* ColorViewController.m in Sources */,
@@ -469,11 +463,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H97TRG8ALN;
+				DEVELOPMENT_TEAM = T3Z4AKXGU6;
 				INFOPLIST_FILE = SHMeasure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -483,11 +479,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H97TRG8ALN;
+				DEVELOPMENT_TEAM = T3Z4AKXGU6;
 				INFOPLIST_FILE = SHMeasure/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

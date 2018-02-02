@@ -7,7 +7,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "ZDStickerView.h"
-#import "SPGripViewBorderView.h"
 
 
 #define kSPUserResizableViewGlobalInset 0
@@ -19,7 +18,7 @@
 
 @interface ZDStickerView ()
 
-@property (nonatomic, strong) SPGripViewBorderView *borderView;
+@property (nonatomic, assign) CGPoint orignalCenter;
 
 @property (strong, nonatomic) UIImageView *resizingControl;
 @property (strong, nonatomic) UIImageView *deleteControl;
@@ -42,14 +41,6 @@
 
 @implementation ZDStickerView
 
-/*
-   // Only override drawRect: if you perform custom drawing.
-   // An empty implementation adversely affects performance during animation.
-   - (void)drawRect:(CGRect)rect
-   {
-    // Drawing code
-   }
- */
 
 #ifdef ZDSTICKERVIEW_LONGPRESS
 - (void)longPress:(UIPanGestureRecognizer *)recognizer
@@ -127,7 +118,7 @@
     {
         [self enableTransluceny:YES];
         self.prevPoint = [recognizer locationInView:self];
-        [self setNeedsDisplay];
+//        [self setNeedsDisplay];
         
         // Inform delegate.
         if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidBeginEditing:)]) {
@@ -167,30 +158,25 @@
             float wChange = 0.0, hChange = 0.0;
 
             wChange = (point.x - self.prevPoint.x);
-            float wRatioChange = (wChange/(float)self.bounds.size.width);
-
             hChange = point.y - self.prevPoint.y;
-
-//            if (ABS(wChange) > 50.0f || ABS(hChange) > 50.0f)
-//            {
-//                self.prevPoint = [recognizer locationOfTouch:0 inView:self];
-//                return;
-//            }
-
-            
             if (self.isSwitchOn) {
-                self.bounds = CGRectMake(self.bounds.origin.x, self.bounds.origin.y,
-                                         self.bounds.size.width + (wChange * 2),
-                                         self.bounds.size.height + (hChange * 2));
+                self.frame = CGRectMake(self.frame.origin.x - wChange,
+                                        self.frame.origin.y - hChange,
+                                        self.frame.size.width + (wChange * 2),
+                                        self.frame.size.height + (hChange * 2));
+                
             } else {
-                self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width + wChange, self.frame.size.height + hChange);
+                
+                self.frame = CGRectMake(self.frame.origin.x,
+                                        self.frame.origin.y,
+                                        self.frame.size.width + (wChange ),
+                                        self.frame.size.height + (hChange));
+                
             }
             
             self.resizingControl.frame =CGRectMake(self.bounds.size.width-kZDStickerViewControlSize,
                                                    self.bounds.size.height-kZDStickerViewControlSize,
                                                    kZDStickerViewControlSize, kZDStickerViewControlSize);
-            self.deleteControl.frame = CGRectMake(0, 0,
-                                                  kZDStickerViewControlSize, kZDStickerViewControlSize);
             self.customControl.frame =CGRectMake(self.bounds.size.width-kZDStickerViewControlSize,
                                                  0,
                                                  kZDStickerViewControlSize,
@@ -198,20 +184,6 @@
             
             self.prevPoint = [recognizer locationOfTouch:0 inView:self];
         }
-
-        /* Rotation */
-        float ang = atan2([recognizer locationInView:self.superview].y - self.center.y,
-                          [recognizer locationInView:self.superview].x - self.center.x);
-
-        float angleDiff = self.deltaAngle - ang;
-
-        if (NO == self.preventsResizing)
-        {
-//            self.transform = CGAffineTransformMakeRotation(-angleDiff);
-        }
-
-        self.borderView.frame = CGRectInset(self.bounds, kSPUserResizableViewGlobalInset, kSPUserResizableViewGlobalInset);
-        [self.borderView setNeedsDisplay];
 
         [self setNeedsDisplay];
         
@@ -243,22 +215,6 @@
 
 - (void)setupDefaultAttributes
 {
-//    self.borderView = [[SPGripViewBorderView alloc] initWithFrame:CGRectInset(self.bounds, kSPUserResizableViewGlobalInset, kSPUserResizableViewGlobalInset)];
-//    self.borderView.borderColor = self.borderColor;
-//    self.borderView.borderWidth = self.borderWidth;
-//    [self.borderView setHidden:YES];
-//    [self addSubview:self.borderView];
-
-//    if (kSPUserResizableViewDefaultMinWidth > self.bounds.size.width*0.5)
-//    {
-//        self.minWidth = kSPUserResizableViewDefaultMinWidth;
-//        self.minHeight = self.bounds.size.height * (kSPUserResizableViewDefaultMinWidth/self.bounds.size.width);
-//    }
-//    else
-//    {
-//        self.minWidth = self.bounds.size.width*0.5;
-//        self.minHeight = self.bounds.size.height*0.5;
-//    }
     
     self.minWidth = 0;
     self.minHeight = 0;
@@ -277,17 +233,12 @@
                                                       action:@selector(longPress:)];
     [self addGestureRecognizer:longpress];
 #endif
-
-    self.deleteControl = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,
-                                                                      kZDStickerViewControlSize, kZDStickerViewControlSize)];
-    self.deleteControl.backgroundColor = [UIColor clearColor];
-    self.deleteControl.image = [UIImage imageNamed:@"ZDStickerView.bundle/ZDBtn3.png"];
-    self.deleteControl.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]
-                                         initWithTarget:self
-                                                 action:@selector(singleTap:)];
-//    [self.deleteControl addGestureRecognizer:singleTap];
-//    [self addSubview:self.deleteControl];
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    [self addGestureRecognizer:panGesture];
+    
+    //拖动手势触发方法
+    
 
     self.resizingControl = [[UIImageView alloc]initWithFrame:CGRectMake(self.frame.size.width-kZDStickerViewControlSize,
                                                                         self.frame.size.height-kZDStickerViewControlSize,
@@ -331,7 +282,31 @@
                             self.frame.origin.x+self.frame.size.width - self.center.x);
 }
 
+-(void)panGesture:(UIPanGestureRecognizer *)sender
+{
+    UIPanGestureRecognizer *panGesture = sender;
+    
+    
+    if ([sender state] == UIGestureRecognizerStateBegan)
+    {
+        self.orignalCenter = self.center;
+    }
+    else if ([sender state] == UIGestureRecognizerStateChanged)
+    {
+        CGPoint movePoint = [panGesture translationInView:self.superview];
+        NSLog(@"mvoePoint = %@", NSStringFromCGPoint(movePoint));
+        
+        [self translateUsingTouchLocation:movePoint];
+    }
+    else if ([sender state] == UIGestureRecognizerStateEnded)
+    {
 
+    }
+    else if ([sender state] == UIGestureRecognizerStateCancelled)
+    {
+
+    }
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -379,101 +354,15 @@
         subview.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
 
-    [self bringSubviewToFront:self.borderView];
     [self bringSubviewToFront:self.resizingControl];
     [self bringSubviewToFront:self.deleteControl];
     [self bringSubviewToFront:self.customControl];
 }
 
-
-
-- (void)setFrame:(CGRect)newFrame
-{
-    [super setFrame:newFrame];
-    self.contentView.frame = CGRectInset(self.bounds,
-                                         kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2,
-                                         kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2);
-
-    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
-    for (UIView *subview in [self.contentView subviews])
-    {
-        [subview setFrame:CGRectMake(0, 0,
-                                     self.contentView.frame.size.width,
-                                     self.contentView.frame.size.height)];
-
-        subview.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    }
-
-    self.borderView.frame = CGRectInset(self.bounds,
-                                        kSPUserResizableViewGlobalInset,
-                                        kSPUserResizableViewGlobalInset);
-
-    self.resizingControl.frame =CGRectMake(self.bounds.size.width-kZDStickerViewControlSize,
-                                           self.bounds.size.height-kZDStickerViewControlSize,
-                                           kZDStickerViewControlSize,
-                                           kZDStickerViewControlSize);
-
-    self.deleteControl.frame = CGRectMake(0, 0,
-                                          kZDStickerViewControlSize, kZDStickerViewControlSize);
-
-    self.customControl.frame =CGRectMake(self.bounds.size.width-kZDStickerViewControlSize,
-                                         0,
-                                         kZDStickerViewControlSize,
-                                         kZDStickerViewControlSize);
-
-    [self.borderView setNeedsDisplay];
-}
-
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (!self.allowDragging)
-    {
-        return;
-    }
-
-    [self enableTransluceny:YES];
-
-    UITouch *touch = [touches anyObject];
-    self.touchStart = [touch locationInView:self.superview];
-    if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidBeginEditing:)])
-    {
-        [self.stickerViewDelegate stickerViewDidBeginEditing:self];
-    }
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self enableTransluceny:NO];
-
-    // Notify the delegate we've ended our editing session.
-    if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidEndEditing:)])
-    {
-        [self.stickerViewDelegate stickerViewDidEndEditing:self];
-    }
-}
-
-
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self enableTransluceny:NO];
-
-    // Notify the delegate we've ended our editing session.
-    if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidCancelEditing:)])
-    {
-        [self.stickerViewDelegate stickerViewDidCancelEditing:self];
-    }
-}
-
-
-
 - (void)translateUsingTouchLocation:(CGPoint)touchPoint
 {
-    CGPoint newCenter = CGPointMake(self.center.x + touchPoint.x - self.touchStart.x,
-                                    self.center.y + touchPoint.y - self.touchStart.y);
+    CGPoint newCenter = CGPointMake(self.orignalCenter.x + touchPoint.x ,
+                                    self.orignalCenter.y + touchPoint.y );
 
     if (self.preventsPositionOutsideSuperview)
     {
@@ -551,7 +440,6 @@
     self.resizingControl.hidden = YES;
     self.deleteControl.hidden = YES;
     self.customControl.hidden = YES;
-    [self.borderView setHidden:YES];
 }
 
 
@@ -584,8 +472,6 @@
     {
         self.resizingControl.hidden = YES;
     }
-
-    [self.borderView setHidden:NO];
 }
 
 
@@ -623,14 +509,12 @@
     }
 }
 
-
-
-- (BOOL)isEditingHandlesHidden
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    return self.borderView.hidden;
+    if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidMoved:)]) {
+        [self.stickerViewDelegate stickerViewDidMoved:self];
+    }
 }
-
-
 
 - (void)enableTransluceny:(BOOL)state
 {
@@ -645,22 +529,6 @@
             self.alpha = 1.0;
         }
     }
-}
-
-- (UIColor *)borderColor {
-    return self.borderView.borderColor;
-}
-
-- (void)setBorderColor:(UIColor *)borderColor {
-    self.borderView.borderColor = borderColor;
-}
-
-- (CGFloat)borderWidth {
-    return self.borderView.borderWidth;
-}
-
-- (void)setBorderWidth:(CGFloat)borderWidth {
-    self.borderView.borderWidth = borderWidth;
 }
 
 - (BOOL)allowPinchToZoom {

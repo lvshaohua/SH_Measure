@@ -62,18 +62,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)stickerViewDidLongPressed:(ZDStickerView *)sticker {
-    NSLog(@"-------- sticker.frame = %@", NSStringFromCGRect(sticker.frame));
-}
-
-- (void)stickerViewDidCustomButtonTap:(ZDStickerView *)sticker {
-     NSLog(@"-------- sticker.frame = %@", NSStringFromCGRect(sticker.frame));
-}
-
-- (void)stickerViewDidBeginEditing:(ZDStickerView *)sticker {
-    NSLog(@"-------- sticker.frame = %@", NSStringFromCGRect(sticker.frame));
-}
-
 - (void)stickerViewDidMoved:(ZDStickerView *)sticker {
     self.XLabel.text = [NSString stringWithFormat:@"%d", (int)(CGRectGetMinX(sticker.frame) * 2)];
     self.YLabel.text = [NSString stringWithFormat:@"%d", (int)(CGRectGetMinY(sticker.frame) * 2)];
@@ -89,11 +77,9 @@
      [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)screenEdgeSwipe:(UIScreenEdgePanGestureRecognizer *)sender {
-    if (sender.edges == UIRectEdgeLeft) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+
+
+
 
 /*
 #pragma mark - Navigation
