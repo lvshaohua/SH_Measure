@@ -391,32 +391,10 @@
     }
 
     self.center = newCenter;
-}
-
-
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    if (!self.allowDragging)
-    {
-        return;
-    }
     
     if ([self.stickerViewDelegate respondsToSelector:@selector(stickerViewDidMoved:)]) {
         [self.stickerViewDelegate stickerViewDidMoved:self];
     }
-
-    [self enableTransluceny:YES];
-
-    CGPoint touchLocation = [[touches anyObject] locationInView:self];
-    if (CGRectContainsPoint(self.resizingControl.frame, touchLocation))
-    {
-        return;
-    }
-
-    CGPoint touch = [[touches anyObject] locationInView:self.superview];
-    [self translateUsingTouchLocation:touch];
-    self.touchStart = touch;
 }
 
 #pragma mark - Property setter and getter
