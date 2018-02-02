@@ -24,11 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.showLabel.layer.borderWidth = 1;
     self.showLabel.layer.borderColor = [UIColor blackColor].CGColor;
-//    UIColor *color = [UIColor colorWithCIColor:[CIColor colorWithString:[[NSUserDefaults standardUserDefaults] valueForKey:@"color"]]];
-//    self.showLabel.textColor = color ? color : [UIColor blackColor];
     
     NSInteger red = [[NSUserDefaults standardUserDefaults] integerForKey:@"red"];
     NSInteger green = [[NSUserDefaults standardUserDefaults] integerForKey:@"green"];
@@ -37,11 +34,6 @@
     
     UIColor *color = [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha / 1.0];
     self.showLabel.textColor = color;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)sliderValueChanged:(UISlider *)sender {
@@ -63,6 +55,8 @@
 - (IBAction)switchValueChanged:(UISwitch *)sender {
     NSInteger font = (int)self.slider.value;
     self.showLabel.font = sender.isOn ? [UIFont boldSystemFontOfSize:font] : [UIFont systemFontOfSize:font];
+    self.heightLabel.text = [NSString stringWithFormat:@"%dpx",(int)(self.showLabel.frame.size.height * 2)];
+    self.widthLabel.text = [NSString stringWithFormat:@"%dpx",(int)(self.showLabel.frame.size.width * 2)];
 }
 
 - (void)setShowLabelFont:(NSInteger)font {

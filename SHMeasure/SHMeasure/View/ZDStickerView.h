@@ -40,18 +40,9 @@ typedef NS_ENUM(NSUInteger, ZDStickerViewButton) {
 @property (nonatomic) CGFloat borderWidth;
 @property (nonatomic) CGFloat minWidth;
 @property (nonatomic) CGFloat minHeight;
-@property (nonatomic) BOOL isSwitchOn;
 
 @property (weak, nonatomic) id <ZDStickerViewDelegate> stickerViewDelegate;
 
-- (void)hideDelHandle;
-- (void)showDelHandle;
-- (void)hideEditingHandles;
-- (void)showEditingHandles;
-- (void)showCustomHandle;
-- (void)hideCustomHandle;
-- (void)setButton:(ZDStickerViewButton)type image:(UIImage *)image;
-- (BOOL)isEditingHandlesHidden;
 @end
 
 

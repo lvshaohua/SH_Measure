@@ -392,21 +392,61 @@
                                     <action selector="doBackAction:" destination="vGF-ag-Fe8" eventType="touchUpInside" id="CKL-nB-Q1U"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2L-Cu-IxE" customClass="ZDStickerView">
-                                <rect key="frame" x="82" y="109" width="206" height="154"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2L-Cu-IxE" customClass="ZDStickerView">
+                                <rect key="frame" x="137.5" y="184.5" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.7933256662" green="0.067855599089999996" blue="0.2879115532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="MTn-ud-ut3"/>
+                                    <constraint firstAttribute="width" constant="100" id="odJ-d1-Dce"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ojf-0H-vMn">
+                                <rect key="frame" x="137.5" y="266.5" width="100" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="uTY-8O-0Xp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc5-aM-mSV">
+                                <rect key="frame" x="219.5" y="184.5" width="50" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="eJu-ns-txB"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqt-JK-gMW">
+                                <rect key="frame" x="217.5" y="264.5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Fnn-Gi-DPp"/>
+                                    <constraint firstAttribute="width" constant="50" id="far-vN-tD9"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="jc5-aM-mSV" firstAttribute="bottom" secondItem="b2L-Cu-IxE" secondAttribute="bottom" id="00Z-qM-ZKX"/>
+                            <constraint firstItem="b2L-Cu-IxE" firstAttribute="centerY" secondItem="lYl-NP-vCw" secondAttribute="centerY" multiplier="0.7" constant="1" id="0M0-FB-6EH"/>
+                            <constraint firstItem="jc5-aM-mSV" firstAttribute="leading" secondItem="b2L-Cu-IxE" secondAttribute="trailing" constant="-18" id="2dW-aJ-I0k"/>
+                            <constraint firstItem="pqt-JK-gMW" firstAttribute="leading" secondItem="b2L-Cu-IxE" secondAttribute="trailing" constant="-20" id="5Eh-zo-HTN"/>
+                            <constraint firstItem="Ojf-0H-vMn" firstAttribute="top" secondItem="b2L-Cu-IxE" secondAttribute="bottom" constant="-18" id="K7O-9P-TOT"/>
+                            <constraint firstItem="Ojf-0H-vMn" firstAttribute="leading" secondItem="b2L-Cu-IxE" secondAttribute="leading" id="Syl-9V-4hN"/>
+                            <constraint firstItem="pqt-JK-gMW" firstAttribute="top" secondItem="b2L-Cu-IxE" secondAttribute="bottom" constant="-20" id="TEd-5w-T6J"/>
+                            <constraint firstItem="b2L-Cu-IxE" firstAttribute="centerX" secondItem="lYl-NP-vCw" secondAttribute="centerX" id="ecy-pt-gdi"/>
+                            <constraint firstItem="jc5-aM-mSV" firstAttribute="top" secondItem="b2L-Cu-IxE" secondAttribute="top" id="g4B-of-9cg"/>
+                            <constraint firstItem="Ojf-0H-vMn" firstAttribute="trailing" secondItem="b2L-Cu-IxE" secondAttribute="trailing" id="hYt-uR-f8i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FuR-RQ-dwB"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="XLabel" destination="XUR-lV-KTx" id="SlN-7Y-jeN"/>
                         <outlet property="YLabel" destination="57r-pc-4Pu" id="lgi-5U-sWW"/>
+                        <outlet property="bottomView" destination="Ojf-0H-vMn" id="fXM-a4-rdE"/>
+                        <outlet property="cornerView" destination="pqt-JK-gMW" id="vMT-fl-kFA"/>
                         <outlet property="heightLabel" destination="ugQ-TC-fnE" id="lDd-Mi-lAu"/>
+                        <outlet property="rightView" destination="jc5-aM-mSV" id="NBg-iM-aeL"/>
                         <outlet property="stickerView" destination="b2L-Cu-IxE" id="8va-64-sFB"/>
                         <outlet property="switchButton" destination="JIx-PD-gsY" id="oaV-YZ-Enh"/>
                         <outlet property="widthLabel" destination="mh8-0x-fkR" id="weQ-5o-knc"/>
