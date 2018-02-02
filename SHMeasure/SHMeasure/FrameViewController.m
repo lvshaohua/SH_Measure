@@ -19,6 +19,11 @@
 @property (weak, nonatomic) IBOutlet UIView *cornerView;
 @property (weak, nonatomic) IBOutlet UIView *rightView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *leftView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UITextField *widthTextField;
+@property (weak, nonatomic) IBOutlet UITextField *heightTextField;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (nonatomic) CGPoint prevPoint;
 
@@ -64,6 +69,26 @@
                                                      initWithTarget:self
                                                      action:@selector(bottomresizeTranslate:)];
     [self.bottomView addGestureRecognizer:bottomPanResizeGesture];
+    
+    UIPanGestureRecognizer*leftPanResizeGesture = [[UIPanGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(leftresizeTranslate:)];
+    [self.leftView addGestureRecognizer:leftPanResizeGesture];
+    
+    UIPanGestureRecognizer*topPanResizeGesture = [[UIPanGestureRecognizer alloc]
+                                                     initWithTarget:self
+                                                     action:@selector(topresizeTranslate:)];
+    [self.topView addGestureRecognizer:topPanResizeGesture];
+    
+    // 添加了一个 键盘即将显示时的监听，如果接收到通知，将调用 keyboardWillApprear：
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                           selector:@selector(keyboardWillApprear:)
+                                               name:UIKeyboardWillShowNotification
+                                             object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                           selector:@selector(keyboardWillDisAppear:)
+                                               name:UIKeyboardWillHideNotification
+                                             object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -188,6 +213,70 @@
     }
 }
 
+- (void)leftresizeTranslate:(UIPanGestureRecognizer *)recognizer
+{
+    if ([recognizer state] == UIGestureRecognizerStateBegan)
+    {
+        self.prevPoint = [recognizer locationInView:self.view];
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateChanged)
+    {
+        CGPoint point = [recognizer locationInView:self.view];
+        float wChange = 0.0, hChange = 0.0;
+        
+        wChange = (point.x - self.prevPoint.x);
+        hChange = 0;
+        if (self.switchButton.isOn) {
+            self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x + wChange,
+                                                self.stickerView.frame.origin.y,
+                                                self.stickerView.frame.size.width - wChange * 2,
+                                                self.stickerView.frame.size.height);
+            
+        } else {
+            
+            self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x + wChange,
+                                                self.stickerView.frame.origin.y,
+                                                self.stickerView.frame.size.width - wChange,
+                                                self.stickerView.frame.size.height);
+            
+        }
+        [self resetStickerViewFrame:self.stickerView.frame];
+        self.prevPoint = [recognizer locationOfTouch:0 inView:self.view];
+    }
+}
+
+- (void)topresizeTranslate:(UIPanGestureRecognizer *)recognizer
+{
+    if ([recognizer state] == UIGestureRecognizerStateBegan)
+    {
+        self.prevPoint = [recognizer locationInView:self.view];
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateChanged)
+    {
+        CGPoint point = [recognizer locationInView:self.view];
+        float wChange = 0.0, hChange = 0.0;
+        
+        wChange = 0;
+        hChange = point.y - self.prevPoint.y;
+        if (self.switchButton.isOn) {
+            self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x,
+                                                self.stickerView.frame.origin.y + hChange,
+                                                self.stickerView.frame.size.width,
+                                                self.stickerView.frame.size.height - (hChange * 2));
+            
+        } else {
+            
+            self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x,
+                                                self.stickerView.frame.origin.y + hChange,
+                                                self.stickerView.frame.size.width,
+                                                self.stickerView.frame.size.height - (hChange));
+            
+        }
+        [self resetStickerViewFrame:self.stickerView.frame];
+        self.prevPoint = [recognizer locationOfTouch:0 inView:self.view];
+    }
+}
+
 - (void)resetStickerViewFrame:(CGRect)frame {
     
     
@@ -206,12 +295,67 @@
                                        self.stickerView.frame.size.width,
                                        self.bottomView.frame.size.height);
     
+    self.leftView.frame = CGRectMake(self.stickerView.frame.origin.x - self.leftView.frame.size.width + 18,
+                                       self.stickerView.frame.origin.y,
+                                       self.leftView.frame.size.width,
+                                       self.stickerView.frame.size.height);
+    
+    self.topView.frame = CGRectMake(self.stickerView.frame.origin.x,
+                                       self.stickerView.frame.origin.y - self.topView.frame.size.height + 18,
+                                       self.stickerView.frame.size.width,
+                                       self.topView.frame.size.height);
+    
     self.XLabel.text = [NSString stringWithFormat:@"%d", (int)(CGRectGetMinX(frame) * 2)];
     self.YLabel.text = [NSString stringWithFormat:@"%d", (int)(CGRectGetMinY(frame) * 2)];
-    self.widthLabel.text = [NSString stringWithFormat:@"%d", (int)(frame.size.width * 2)];
-    self.heightLabel.text = [NSString stringWithFormat:@"%d", (int)(frame.size.height * 2)];
+    self.widthTextField.text = [NSString stringWithFormat:@"%d", (int)(frame.size.width * 2)];
+    self.heightTextField.text = [NSString stringWithFormat:@"%d", (int)(frame.size.height * 2)];
 }
 
+- (IBAction)textFieldValueChanged:(UITextField *)sender {
+    
+    
+    
+}
+
+
+
+- (void)keyboardWillApprear:(NSNotification *)noti {
+
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.contentView.transform = CGAffineTransformMakeTranslation(0, (-70));
+    }];
+}
+
+#pragma mark -
+#pragma mark -  键盘即将隐藏的时候调用
+- (void)keyboardWillDisAppear:(NSNotification *)noti {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.contentView.transform =CGAffineTransformIdentity;
+    }];
+    
+    self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x,
+                                        self.stickerView.frame.origin.x,
+                                        self.widthTextField.text.integerValue / 2,
+                                        self.heightTextField.text.integerValue / 2);
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.widthTextField resignFirstResponder];
+    [self.heightTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    self.stickerView.frame = CGRectMake(self.stickerView.frame.origin.x,
+                                        self.stickerView.frame.origin.x,
+                                        self.widthTextField.text.integerValue / 2,
+                                        self.heightTextField.text.integerValue / 2);
+    return YES;
+}
 
 
 /*
