@@ -13,30 +13,11 @@
 		1F14F0B720240063008CD770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F14F0B620240063008CD770 /* Assets.xcassets */; };
 		1F14F0BA20240063008CD770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F14F0B820240063008CD770 /* LaunchScreen.storyboard */; };
 		1F14F0BD20240063008CD770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0BC20240063008CD770 /* main.m */; };
-		1F14F0C720240063008CD770 /* SHMeasureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0C620240063008CD770 /* SHMeasureTests.m */; };
-		1F14F0D220240063008CD770 /* SHMeasureUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0D120240063008CD770 /* SHMeasureUITests.m */; };
 		1F14F0E52024047F008CD770 /* ZDStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0E32024047F008CD770 /* ZDStickerView.m */; };
 		1F14F0E8202404B0008CD770 /* FontViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0E7202404B0008CD770 /* FontViewController.m */; };
 		1F14F0EB202404D1008CD770 /* FrameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F14F0EA202404D1008CD770 /* FrameViewController.m */; };
 		1FA84F7020243AA000D2B5DC /* ColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA84F6F20243AA000D2B5DC /* ColorViewController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1F14F0C320240063008CD770 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F14F0A220240063008CD770 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F14F0A920240063008CD770;
-			remoteInfo = SHMeasure;
-		};
-		1F14F0CE20240063008CD770 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F14F0A220240063008CD770 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F14F0A920240063008CD770;
-			remoteInfo = SHMeasure;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1F14F0AA20240063008CD770 /* SHMeasure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHMeasure.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,10 +30,8 @@
 		1F14F0B920240063008CD770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F14F0BB20240063008CD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F14F0BC20240063008CD770 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F14F0C220240063008CD770 /* SHMeasureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHMeasureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F14F0C620240063008CD770 /* SHMeasureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMeasureTests.m; sourceTree = "<group>"; };
 		1F14F0C820240063008CD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F14F0CD20240063008CD770 /* SHMeasureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHMeasureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F14F0D120240063008CD770 /* SHMeasureUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHMeasureUITests.m; sourceTree = "<group>"; };
 		1F14F0D320240063008CD770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F14F0E02024047F008CD770 /* ZDStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDStickerView.h; sourceTree = "<group>"; };
@@ -67,20 +46,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		1F14F0A720240063008CD770 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F14F0BF20240063008CD770 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F14F0CA20240063008CD770 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -104,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				1F14F0AA20240063008CD770 /* SHMeasure.app */,
-				1F14F0C220240063008CD770 /* SHMeasureTests.xctest */,
-				1F14F0CD20240063008CD770 /* SHMeasureUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,42 +143,6 @@
 			productReference = 1F14F0AA20240063008CD770 /* SHMeasure.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1F14F0C120240063008CD770 /* SHMeasureTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F14F0D920240063008CD770 /* Build configuration list for PBXNativeTarget "SHMeasureTests" */;
-			buildPhases = (
-				1F14F0BE20240063008CD770 /* Sources */,
-				1F14F0BF20240063008CD770 /* Frameworks */,
-				1F14F0C020240063008CD770 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1F14F0C420240063008CD770 /* PBXTargetDependency */,
-			);
-			name = SHMeasureTests;
-			productName = SHMeasureTests;
-			productReference = 1F14F0C220240063008CD770 /* SHMeasureTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		1F14F0CC20240063008CD770 /* SHMeasureUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F14F0DC20240063008CD770 /* Build configuration list for PBXNativeTarget "SHMeasureUITests" */;
-			buildPhases = (
-				1F14F0C920240063008CD770 /* Sources */,
-				1F14F0CA20240063008CD770 /* Frameworks */,
-				1F14F0CB20240063008CD770 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1F14F0CF20240063008CD770 /* PBXTargetDependency */,
-			);
-			name = SHMeasureUITests;
-			productName = SHMeasureUITests;
-			productReference = 1F14F0CD20240063008CD770 /* SHMeasureUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,16 +155,6 @@
 					1F14F0A920240063008CD770 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
-					};
-					1F14F0C120240063008CD770 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1F14F0A920240063008CD770;
-					};
-					1F14F0CC20240063008CD770 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 1F14F0A920240063008CD770;
 					};
 				};
 			};
@@ -255,8 +172,6 @@
 			projectRoot = "";
 			targets = (
 				1F14F0A920240063008CD770 /* SHMeasure */,
-				1F14F0C120240063008CD770 /* SHMeasureTests */,
-				1F14F0CC20240063008CD770 /* SHMeasureUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,20 +184,6 @@
 				1F14F0BA20240063008CD770 /* LaunchScreen.storyboard in Resources */,
 				1F14F0B720240063008CD770 /* Assets.xcassets in Resources */,
 				1F14F0B520240063008CD770 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F14F0C020240063008CD770 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F14F0CB20240063008CD770 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,36 +204,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1F14F0BE20240063008CD770 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F14F0C720240063008CD770 /* SHMeasureTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F14F0C920240063008CD770 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F14F0D220240063008CD770 /* SHMeasureUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1F14F0C420240063008CD770 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F14F0A920240063008CD770 /* SHMeasure */;
-			targetProxy = 1F14F0C320240063008CD770 /* PBXContainerItemProxy */;
-		};
-		1F14F0CF20240063008CD770 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F14F0A920240063008CD770 /* SHMeasure */;
-			targetProxy = 1F14F0CE20240063008CD770 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1F14F0B320240063008CD770 /* Main.storyboard */ = {
@@ -490,60 +362,6 @@
 			};
 			name = Release;
 		};
-		1F14F0DA20240063008CD770 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SHMeasureTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHMeasure.app/SHMeasure";
-			};
-			name = Debug;
-		};
-		1F14F0DB20240063008CD770 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SHMeasureTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHMeasure.app/SHMeasure";
-			};
-			name = Release;
-		};
-		1F14F0DD20240063008CD770 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SHMeasureUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasureUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SHMeasure;
-			};
-			name = Debug;
-		};
-		1F14F0DE20240063008CD770 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = SHMeasureUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lvshaohua.SHMeasureUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = SHMeasure;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -561,24 +379,6 @@
 			buildConfigurations = (
 				1F14F0D720240063008CD770 /* Debug */,
 				1F14F0D820240063008CD770 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F14F0D920240063008CD770 /* Build configuration list for PBXNativeTarget "SHMeasureTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F14F0DA20240063008CD770 /* Debug */,
-				1F14F0DB20240063008CD770 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F14F0DC20240063008CD770 /* Build configuration list for PBXNativeTarget "SHMeasureUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F14F0DD20240063008CD770 /* Debug */,
-				1F14F0DE20240063008CD770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
